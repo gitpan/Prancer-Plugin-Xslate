@@ -4,7 +4,7 @@ use strict;
 use warnings FATAL => 'all';
 
 use version;
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 
 use Prancer::Plugin;
 use parent qw(Prancer::Plugin Exporter);
@@ -166,7 +166,6 @@ engine is as simple as this:
     use Prancer::Plugin::Xslate qw(render);
 
     my $plugin = Prancer::Plugin::Xslate->load();
-    $plugin->add_module("Data::Dumper");
 
     print render("foobar.tx", \%vars);
 
@@ -183,7 +182,8 @@ way to handle that.
     });
 
 The optional third argument to C<render> can be a hashref with additional,
-overriding options for L<Text::Xslate>.
+overriding options for L<Text::Xslate>. This is how you might go about adding
+support for functions and methods.
 
 =head1 METHODS
 
@@ -228,8 +228,13 @@ the same terms as Perl itself.
 
 =over
 
-=item L<Prancer>
-=item L<Text::Xslate>
+=item
+
+L<Prancer>
+
+=item
+
+L<Text::Xslate>
 
 =back
 
